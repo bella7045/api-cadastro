@@ -11,7 +11,6 @@ tecnologias
 
 como rodar
 - npm install
-
 - node index.js
 
 
