@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "cpf": "123",
+    "nome": "Alice",
+    "idade": "30",
+    "endereco": "rua das flores",
+    "bairro": "centro",
+    "contato": "123456789"
+  }
+]
