@@ -59,7 +59,7 @@ app.post('/clientes', (req, res) => {
 app.get('/clientes', (req, res) => {
     const clientes = lerclientes();
     res.status(200).send(clientes);
-    
+
 });
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost: ${port}`);
@@ -111,10 +111,6 @@ app.post('/produtos', (req, res) => {
         produto: novoProduto
     });
 
-});
-
-
-app.get('/produtos', (req, res) => {
-    const produtos = lerProdutos();
-    res.status(200).json(produtos);
-});
+    app.listen(port, () => {
+        console.log(`Servidor rodando em http://localhost: ${port}`);
+    });
