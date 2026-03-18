@@ -37,7 +37,7 @@ app.post('/clientes', (req, res) => {
     if (!cpf || !nome || !idade || !endereco || !bairro || !contato) {
         return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
     }
-    
+
     const clientes = lerclientes();
 
     if (clientes.some(c => c.cpf === cpf)) {
@@ -108,5 +108,7 @@ app.post('/produtos', (req, res) => {
     res.status(201).json({
         message: 'Produto cadastrado com sucesso',
         produto: novoProduto
+
     });
+
 });
