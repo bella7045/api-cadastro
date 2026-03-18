@@ -37,10 +37,7 @@ app.post('/clientes', (req, res) => {
     if (!cpf || !nome || !idade || !endereco || !bairro || !contato) {
         return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
     }
-    app.get('/clientes', (req, res) => {
-
-
-    });
+    
     const clientes = lerclientes();
 
     if (clientes.some(c => c.cpf === cpf)) {
@@ -53,14 +50,16 @@ app.post('/clientes', (req, res) => {
 
     res.status(201).json({ message: 'Cliente cadastrado com sucesso', cliente: novoCliente });
 
-
 });
 
 app.get('/clientes', (req, res) => {
     const clientes = lerclientes();
-    res.status(200).send(clientes);
-
+    res.status(200).json({
+        message: 'Clientes listados com sucesso',
+        clientes: clientes
+    });
 });
+
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost: ${port}`);
 });
@@ -110,7 +109,4 @@ app.post('/produtos', (req, res) => {
         message: 'Produto cadastrado com sucesso',
         produto: novoProduto
     });
-
-    app.listen(port, () => {
-        console.log(`Servidor rodando em http://localhost: ${port}`);
-    });
+});

@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": 1,
+    "nome": "Bia",
+    "valor": 120,
+    "descricao": "Mouse"
+  }
+]
