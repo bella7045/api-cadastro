@@ -1,10 +1,12 @@
 const express = require('express'); //servidor web
 const fs = require('fs'); //manipulação de arquivos
 const path = require('path'); //manipulação de caminhos
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 
+app.use(cors());
 app.use(express.json());
 
 /*
