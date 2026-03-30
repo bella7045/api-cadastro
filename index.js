@@ -61,7 +61,7 @@ app.post('/clientes', (req, res) => {
 app.get('/clientes', (req, res) => {
     const clientes = lerclientes();
     res.status(200).send(clientes);
-    
+
 });
 
 
@@ -167,6 +167,12 @@ app.post('/usuarios', (req, res) => {
 
     res.status(201).json({ message: 'Usuario cadastrado com sucesso', usuario: novoUsuario });
 });
+
+app.get('/usuarios', (req, res) => {
+    const usuarios = lerUsuarios();
+    res.status(200).send(usuarios);
+});
+
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost: ${port}`);
