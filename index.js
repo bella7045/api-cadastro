@@ -63,9 +63,7 @@ app.get('/clientes', (req, res) => {
     res.status(200).send(clientes);
     
 });
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost: ${port}`);
-});
+
 
 /*
 PRODUTOS ENDPOINTS
@@ -124,4 +122,8 @@ app.get('/produtos/:id', (req, res) => {
     }
 
     res.status(200).json(produto);
+});
+
+app.listen(port, () => {
+    console.log(`Servidor rodando em http://localhost: ${port}`);
 });
