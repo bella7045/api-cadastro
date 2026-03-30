@@ -166,6 +166,7 @@ app.post('/usuarios', (req, res) => {
     salvarUsuarios(usuarios);
 
     res.status(201).json({ message: 'Usuario cadastrado com sucesso', usuario: novoUsuario });
+    
 });
 
 
