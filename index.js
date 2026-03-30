@@ -61,7 +61,7 @@ app.post('/clientes', (req, res) => {
 app.get('/clientes', (req, res) => {
     const clientes = lerclientes();
     res.status(200).send(clientes);
-    
+
 });
 
 
@@ -123,6 +123,52 @@ app.get('/produtos/:id', (req, res) => {
 
     res.status(200).json(produto);
 });
+
+/**
+ * USUARIOS ENDPOINTS
+ */
+const usuariosFile = path.join(__dirname, 'usuarios.json');
+
+function lerUsuarios() {
+    if (!fs.existsSync(usuariosFile)) {
+        return [];
+
+    }
+    const dados = fs.readFileSync(usuariosFile, 'utf-8');
+    try {
+        return JSON.parse(dados) || [];
+    } catch (e) {
+        return [];
+    }
+
+}
+
+function salvarUsuarios(usuarios) {
+    fs.writeFileSync(usuariosFile, JSON.stringify(usuarios, null, 2), 'utf-8');
+}
+
+
+app.post('/usuarios', (req, res) => {
+    const { codigo, nome, email, senha } = req.body;
+
+    if (!codigo || !nome || !email || !senha) {
+        return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
+    }
+
+    const usuarios = lerUsuarios();
+
+    if (usuarios.some(u => u.email === email)) {
+        return res.status(400).json({ error: 'Email já cadastrado' });
+    }
+
+    const novoUsuario = { codigo, nome, email, senha };
+    usuarios.push(novoUsuario);
+    salvarUsuarios(usuarios);
+
+    res.status(201).json({ message: 'Usuario cadastrado com sucesso', usuario: novoUsuario });
+    
+});
+
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost: ${port}`);
