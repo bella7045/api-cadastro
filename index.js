@@ -39,10 +39,7 @@ app.post('/clientes', (req, res) => {
     if (!cpf || !nome || !idade || !endereco || !bairro || !contato) {
         return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
     }
-    app.get('/clientes', (req, res) => {
-
-
-    });
+    
     const clientes = lerclientes();
 
     if (clientes.some(c => c.cpf === cpf)) {
@@ -54,7 +51,6 @@ app.post('/clientes', (req, res) => {
     salvarClientes(clientes);
 
     res.status(201).json({ message: 'Cliente cadastrado com sucesso', cliente: novoCliente });
-
 
 });
 
@@ -169,6 +165,10 @@ app.post('/usuarios', (req, res) => {
     
 });
 
+app.get('/usuarios', (req, res) => {
+    const usuarios = lerUsuarios();
+    res.status(200).json(usuarios);
+});
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost: ${port}`);
